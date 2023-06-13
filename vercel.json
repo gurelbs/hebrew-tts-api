@@ -1,11 +1,23 @@
 {
     "rewrites": [
-      { "source": "/api/(.*)", "destination": "/api/$1" }
+      { "source": "/api/(.*)", "destination": "/api/$1" },
+      { "source": "/(.*)", "destination": "/$1" }
     ],
-    "proxy": {
-      "/api/(.*)": {
-        "destination": "https://https://hebrew-tts-api.vercel.app/api/$1"
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "https://hebrew-tts-api.vercel.app/api/$1",
+        "headers": {
+          "host": "hebrew-tts-api.vercel.app"
+        }
+      },
+      {
+        "src": "/(.*)",
+        "dest": "https://wimm.info/$1",
+        "headers": {
+          "host": "wimm.info"
+        }
       }
-    }
+    ]
   }
   
