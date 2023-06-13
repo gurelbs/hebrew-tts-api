@@ -49,7 +49,7 @@ app.get('/api', async (req, res) => {
       }
     });
 
-    await page.goto(process.env.ttsPrefixUrl+q);
+    await page.goto(encodeURI(process.env.ttsPrefixUrl+q));
     while (!audioBuffer) {
       await timeout(0);
     }
