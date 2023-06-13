@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "build": "npm i",
+    "start": "node ./index.js"
   },
   "keywords": [],
   "author": "Gurel Ben Shabat",

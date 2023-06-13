@@ -31,7 +31,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/api', async (req, res) => {
-  res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   let browser = null;
   let audioBuffer = null;
@@ -56,10 +55,10 @@ app.get('/api', async (req, res) => {
     });
 
     await page.goto(process.env.ttsPrefixUrl+q);
-    while (!audioBuffer) await timeout(0);
-
-    const audioPath = path.join(process.cwd(), "records", "audio.mp3");
-    await fs.mkdir(path.dirname(audioPath), { recursive: true });
+    while (!audioBuffer) {
+      await timeout(0);
+    }
+    const audioPath = path.join(process.cwd(), "audio.mp3");
     await fs.writeFile(audioPath, audioBuffer);
     console.info("Audio file saved successfully.");
 
