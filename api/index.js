@@ -52,7 +52,7 @@ app.get('/api', async (req, res) => {
     while (!audioBuffer) {
       await timeout(0);
     }
-    const audioPath = path.join(process.cwd(), "audio.mp3");
+    const audioPath = path.join(process.cwd(), "api", "audio.mp3");
     await fs.writeFile(audioPath, audioBuffer);
     console.info("Audio file saved successfully.");
 
