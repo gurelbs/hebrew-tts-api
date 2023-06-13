@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "Gurel Ben Shabat",
-  "license": "ISC",
+  "license": "ISC", 
   "dependencies": {
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
