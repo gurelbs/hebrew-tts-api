@@ -64,7 +64,7 @@ app.get('/api', async (req, res) => {
     res.status(400).send("An error occurred.");
   } finally {
     if (browser) {
-      await browser.close();
+      browser.disconnect();
     }
   }
 });
