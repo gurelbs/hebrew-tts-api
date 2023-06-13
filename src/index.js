@@ -8,6 +8,8 @@ const app = express();
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
 const timeout = miliseconds => new Promise(r => setTimeout(r, miliseconds));
 
+app.use(express.static('public'))
+
 const getBrowser = async () => {
   if (IS_PRODUCTION) {
     return puppeteer.connect({
@@ -29,6 +31,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/api', async (req, res) => {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   let browser = null;
   let audioBuffer = null;
   const q = req.query.q?.toString();
