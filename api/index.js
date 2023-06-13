@@ -61,7 +61,11 @@ app.get('/api', async (req, res) => {
   }
 });
 
-app.route('/*').get((req, res) => res.redirect('/api'));
+// Middleware to handle 404 errors
+app.use((req, res, next) => {
+  // Redirect all 404 requests to /api
+  res.redirect(302, '/api');
+});
 
 // Error handler middleware
 app.use((err, req, res, next) => {
