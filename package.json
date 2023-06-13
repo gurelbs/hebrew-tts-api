@@ -1,0 +1,18 @@
+{
+  "name": "bd-first-scraping-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Gurel Ben Shabat",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "puppeteer": "^20.6.0",
+    "puppeteer-core": "^20.6.0"
+  }
+}
