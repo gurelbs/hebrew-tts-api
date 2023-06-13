@@ -10,8 +10,12 @@ const timeout = miliseconds => new Promise(r => setTimeout(r, miliseconds));
 
 const getBrowser = async () => {
   if (IS_PRODUCTION) {
+    puppeteer.Accessibility
     return puppeteer.connect({
-      browserWSEndpoint: process.env.browserWSEndpoint});
+      browserWSEndpoint: process.env.browserWSEndpoint,
+      ignoreHTTPSErrors: true,
+      protocolTimeout: miliseconds(10000),
+    });
   } else {
     return puppeteer.launch({ headless: "new" });
   }
@@ -41,7 +45,7 @@ app.get('/api', async (req, res) => {
       }
     });
 
-    await page.goto(encodeURI(process.env.ttsPrefixUrl+q));
+    await page.goto(encodeURI(process.env.ttsPrefixUrl+q), { waitUntil: 'domcontentloaded' });
     while (!audioBuffer) {
       await timeout(0);
     }
