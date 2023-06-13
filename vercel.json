@@ -1,9 +1,3 @@
 {
-    "version": 2,
-    "use":"@vercel/node@latest",
-    "src":"api/index.js",
-    "config":{
-        "zeroConfig":true
-    }
-  }
-  
+    "version": 2
+}
