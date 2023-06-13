@@ -17,6 +17,10 @@ const getBrowser = async () => {
   }
 };
 
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
+});
+
 app.use((req, res, next) => {
   if (req.path !== '/api') {
     return res.redirect('/api');
