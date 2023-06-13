@@ -8,8 +8,6 @@ const app = express();
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
 const timeout = miliseconds => new Promise(r => setTimeout(r, miliseconds));
 
-app.use(express.static('public'))
-
 const getBrowser = async () => {
   if (IS_PRODUCTION) {
     return puppeteer.connect({
@@ -58,7 +56,7 @@ app.get('/api', async (req, res) => {
     while (!audioBuffer) {
       await timeout(0);
     }
-    const audioPath = path.join(process.cwd(), "audio.mp3");
+    const audioPath = path.join(process.cwd(), "public", "audio.mp3");
     await fs.writeFile(audioPath, audioBuffer);
     console.info("Audio file saved successfully.");
 
@@ -81,7 +79,7 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(process.env.PORT || 3000, () => console.log("Listening on http://localhost:3000"));
+app.listen(IS_PRODUCTION ? process.env.PORT : 8080, () => console.log("Listening on http://localhost:8080"));
 
 
 module.exports = app;

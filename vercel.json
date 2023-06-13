@@ -1,3 +1,9 @@
 {
-    "rewrites": [{ "source": "/api/(.*)", "destination": "/api/index.js" }]
-}
+    "version": 2,
+    "use":"@vercel/node@latest",
+    "src":"api/index.js",
+    "config":{
+        "zeroConfig":true
+    }
+  }
+  
