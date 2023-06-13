@@ -17,14 +17,6 @@ const getBrowser = async () => {
   }
 };
 
-
-app.get('*', (req, res, next) => {
-  if (req.path !== '/api') {
-    return res.redirect('/api');
-  }
-  next();
-});
-
 app.get('/api', async (req, res) => {
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   let browser = null;
@@ -69,6 +61,7 @@ app.get('/api', async (req, res) => {
   }
 });
 
+app.route('/*').get((req, res) => res.redirect('/api'));
 
 // Error handler middleware
 app.use((err, req, res, next) => {
