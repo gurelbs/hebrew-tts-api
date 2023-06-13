@@ -14,7 +14,7 @@ const getBrowser = async () => {
     return puppeteer.connect({
       browserWSEndpoint: process.env.browserWSEndpoint,
       ignoreHTTPSErrors: true,
-      protocolTimeout: miliseconds(10000),
+      protocolTimeout: timeout(10000),
     });
   } else {
     return puppeteer.launch({ headless: "new" });
