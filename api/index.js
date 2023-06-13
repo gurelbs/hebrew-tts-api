@@ -18,7 +18,7 @@ const getBrowser = async () => {
 };
 
 
-app.use((req, res, next) => {
+app.get('*', (req, res, next) => {
   if (req.path !== '/api') {
     return res.redirect('/api');
   }
